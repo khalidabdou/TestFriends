@@ -1,0 +1,40 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model question {
+  id            Int    @id @default(autoincrement())
+  question      String @db.Text
+  realAnswer    String @db.VarChar(255)
+  realAnswerImg String @db.VarChar(255)
+  answer1       String @db.VarChar(255)
+  answer2       String @db.VarChar(255)
+  answer3       String @db.VarChar(255)
+  answer4       String @db.VarChar(255)
+  img1          String @db.Text
+  img2          String @db.Text
+  img3          String @db.Text
+  img4          String @db.Text
+  answered      Int?
+}
+
+model result {
+  id       Int    @id @default(autoincrement())
+  sender   Int
+  receiver Int
+  answers  String @db.Text
+}
+
+model user {
+  id       Int    @id @default(autoincrement())
+  username String @db.VarChar(255)
+  email    String @db.Text
+  name     String @db.VarChar(255)
+  token    String @db.Text
+  image    String @db.Text
+}
