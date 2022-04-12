@@ -17,7 +17,7 @@ apiRout.get('/getUser', async (req, res) => {
 
 //create user 
 apiRout.get('/insertUser', async (req, res) => {
-    const user = await prisma.user.create({
+    let user = await prisma.user.create({
         data: {
             username: 'ABDELLAH',
             email: 'elsa@prisma.io',
@@ -26,9 +26,9 @@ apiRout.get('/insertUser', async (req, res) => {
             image: 'skfskfskaljfik',
         },
     })
-    if (user.id) {
+  
         console.log(user);
-    }
+    
 })
 
 
