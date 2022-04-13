@@ -5,7 +5,9 @@ const api=require('./routes/api')
 
 app.use('/api',api)
 
-
+app.get('',(req,res)=>{
+  res.send("welcom to api 2")
+})
 
 
 var server =app.listen(port, () => {
