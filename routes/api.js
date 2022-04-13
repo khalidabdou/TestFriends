@@ -9,25 +9,29 @@ const prisma = new PrismaClient()
 apiRout.get('/getUser', async (req, res) => {
     const user = await prisma.user.findFirst({
         where: {
-            username: 'ABDELLAH',
+            username: "abdellah",
         },
     })
     res.send(user)
 })
+//get user by id 
+
 
 //create user 
-apiRout.get('/insertUser', async (req, res) => {
+apiRout.post('/insertUser', async (req, res) => {
+
+    const bodyUser=req.body
     let user = await prisma.user.create({
         data: {
-            username: 'ABDELLAH',
-            email: 'elsa@prisma.io',
-            name: 'abdellah khalid',
-            token: 'hgjvbisajhflsakf33455d',
-            image: 'skfskfskaljfik',
+            username: bodyUser.username,
+            email: bodyUser.email,
+            name: bodyUser.username,
+            token: bodyUser.token,
+            image: bodyUser.img,
         },
     })
   
-        console.log(user);
+        console.log(user.id);
     
 })
 
