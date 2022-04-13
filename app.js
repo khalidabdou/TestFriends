@@ -1,10 +1,13 @@
 const express=require('express')
-const port =  5000;
+const port =  8000;
 const app = express();
 const api=require('./routes/api')
 
 app.use('/api',api)
 
+app.get('',(req,res)=>{
+  res.send("welcom to api")
+})
 
 
 var server =app.listen(port, () => {
