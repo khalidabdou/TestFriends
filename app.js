@@ -1,5 +1,5 @@
 const express=require('express')
-const port =  3626;
+const port = process.env.PORT || 5000;
 const app = express();
 const api=require('./routes/api')
 
