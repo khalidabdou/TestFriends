@@ -20,19 +20,25 @@ apiRout.get('/getUser', async (req, res) => {
 //create user 
 apiRout.post('/insertUser', async (req, res) => {
 
-    const bodyUser=req.body
-    let user = await prisma.user.create({
-        data: {
-            username: bodyUser.username,
-            email: bodyUser.email,
-            name: bodyUser.username,
-            token: bodyUser.token,
-            image: bodyUser.img,
-        },
-    })
-  
-        console.log(user.id);
-    
+    try {
+        const bodyUser = req.body
+        let user = await prisma.user.create({
+            data: {
+                username: bodyUser.username,
+                email: bodyUser.email,
+                name: bodyUser.username,
+                token: bodyUser.token,
+                image: bodyUser.img,
+            },
+        })
+        res.send('success')
+    } catch (error) {
+        res.send(error)
+    }
+
+
+
+
 })
 
 
@@ -40,9 +46,9 @@ apiRout.post('/insertUser', async (req, res) => {
 apiRout.post('/insertResults', async (req, res) => {
     let insertRes = await prisma.result.create({
         data: {
-            sender:10,
-            receiver:11,
-            answers:'{}'
+            sender: 10,
+            receiver: 11,
+            answers: '{}'
         }
     })
 
