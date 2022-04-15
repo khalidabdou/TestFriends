@@ -25,7 +25,7 @@ apiRout.get('/getUser', async (req, res) => {
 apiRout.post('/updateMyQuestions', async (req, res) => {
     try {
         const questions = JSON.parse(req.body.questions)
-    
+        console.log(questions);
         const id = parseInt(req.query.id)
         let result = await prisma.user.update({
             where: {
