@@ -32,7 +32,7 @@ apiRout.post('/updateMyQuestions', async (req, res) => {
                 id: id
             },
             data: {
-                myQuetions: questions
+                myQuetions: "dgkjdsglkj"
             }
         })
 
