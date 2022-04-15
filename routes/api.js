@@ -13,7 +13,7 @@ var serverKey = 'AAAAUSC50us:APA91bHb9VwRi8WWVSGFJ8-2ZRLGSIQ1nCjoBapD_qAmExdVNYK
 //get user by id 
 apiRout.get('/getUser', async (req, res) => {
 
-    const id=parseInt(req.query.id)
+    const id = parseInt(req.query.id)
     const user = await prisma.user.findFirst({
         where: {
             id: id,
@@ -22,24 +22,26 @@ apiRout.get('/getUser', async (req, res) => {
     res.send(user)
 })
 
-apiRout.post('/updateMyQuestions',async (req,res)=>{
-    try{
-        const questions = req.body.questions
-        const id=parseInt(req.query.id)
-        let result=await prisma.user.update({
-            where:{
-                id:id
+apiRout.post('/updateMyQuestions', async (req, res) => {
+    try {
+        const questions = JSON.parse(req.body.questions)
+    
+        const id = parseInt(req.query.id)
+        let result = await prisma.user.update({
+            where: {
+                id: id
             },
-            data:{
+            data: {
                 myQuetions: questions
             }
         })
-        if(result){
+
+        if (result) {
             res.send('success')
         }
 
-    }catch(err){
-        res.send('err '+err)
+    } catch (err) {
+        res.send('err ' + err)
     }
 })
 
