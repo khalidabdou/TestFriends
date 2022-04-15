@@ -22,7 +22,7 @@ apiRout.get('/getUser', async (req, res) => {
     res.send(user)
 })
 
-apiRout.post('/updateMyQuestions',(req,res)=>{
+apiRout.post('/updateMyQuestions',async (req,res)=>{
     try{
         const questions = req.body.questions
         const id=parseInt(req.query.id)
