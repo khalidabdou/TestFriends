@@ -32,9 +32,9 @@ apiRout.post('/insertUser', async (req, res) => {
                 image: bodyUser.img,
             },
         })
-        res.send('success 1')
+        res.send(user)
     } catch (error) {
-        res.send(error)
+        res.send({"err":error})
     }
 
 
