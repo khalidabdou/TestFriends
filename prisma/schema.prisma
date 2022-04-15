@@ -7,8 +7,9 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
 model question {
-  id            Int    @id @default(autoincrement())
+  id            Int
   question      String @db.Text
   realAnswer    String @db.VarChar(255)
   realAnswerImg String @db.VarChar(255)
@@ -21,20 +22,26 @@ model question {
   img3          String @db.Text
   img4          String @db.Text
   answered      Int?
+
+  @@ignore
 }
 
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
 model result {
-  id       Int    @id @default(autoincrement())
+  id       Int
   sender   Int
   receiver Int
   answers  String @db.Text
+
+  @@ignore
 }
 
 model user {
-  id       Int    @id @default(autoincrement())
-  username String @db.VarChar(255)
-  email    String @db.Text
-  name     String @db.VarChar(255)
-  token    String @db.Text
-  image    String @db.Text
+  id         Int     @id @default(autoincrement())
+  username   String  @db.VarChar(255)
+  email      String  @db.Text
+  name       String  @db.VarChar(255)
+  token      String  @db.Text
+  image      String  @db.Text
+  myQuetions String? @db.Text
 }

@@ -41,6 +41,7 @@ apiRout.post('/updateMyQuestions', async (req, res) => {
         }
 
     } catch (err) {
+        console.log(err);
         res.send('err ' + err)
     }
 })
