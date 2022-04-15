@@ -20,8 +20,7 @@ apiRout.get('/getUser', async (req, res) => {
 //create user 
 apiRout.post('/insertUser', async (req, res) => {
 
-    res.send('success')
-    return
+    
     try {
         const bodyUser = req.body
         let user = await prisma.user.create({
@@ -33,7 +32,7 @@ apiRout.post('/insertUser', async (req, res) => {
                 image: bodyUser.img,
             },
         })
-        res.send('success')
+        res.send('success 1')
     } catch (error) {
         res.send(error)
     }
