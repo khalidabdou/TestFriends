@@ -19,7 +19,9 @@ apiRout.get('/getUser', async (req, res) => {
             id: id,
         },
     })
-    res.send(user)
+    if (user)
+        res.send(user)
+    else res.send(null)
 })
 
 apiRout.post('/updateMyQuestions', async (req, res) => {
@@ -27,7 +29,7 @@ apiRout.post('/updateMyQuestions', async (req, res) => {
         //const questions = JSON.parse(req.body.questions)
         //console.log(questions);
         const id = parseInt(req.query.id)
-        const quetions=req.query.questions
+        const quetions = req.query.questions
         let result = await prisma.user.update({
             where: {
                 id: id
@@ -38,7 +40,7 @@ apiRout.post('/updateMyQuestions', async (req, res) => {
         })
 
         if (result) {
-            res.send('success '+result.id)
+            res.send('success ')
         }
 
     } catch (err) {
