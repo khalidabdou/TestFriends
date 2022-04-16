@@ -27,17 +27,18 @@ apiRout.post('/updateMyQuestions', async (req, res) => {
         //const questions = JSON.parse(req.body.questions)
         //console.log(questions);
         const id = parseInt(req.query.id)
+        const quetions=req.query.questions
         let result = await prisma.user.update({
             where: {
                 id: id
             },
             data: {
-                myQuetions: "dgkjdsglkj"
+                myQuetions: quetions
             }
         })
 
         if (result) {
-            res.send('success')
+            res.send('success '+result.id)
         }
 
     } catch (err) {
