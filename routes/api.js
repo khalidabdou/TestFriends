@@ -63,7 +63,7 @@ apiRout.post('/insertUser', async (req, res) => {
         })
         res.send(user)
     } catch (error) {
-        res.send({ "err": bodyUser })
+        res.send({ "err": error })
     }
 })
 
