@@ -50,19 +50,19 @@ apiRout.post('/updateMyQuestions', async (req, res) => {
 
 //create user 
 apiRout.post('/insertUser', async (req, res) => {
-    
-        const bodyUser = req.body
-        let user = await prisma.user.create({
-            data: {
-                username: bodyUser.username,
-                email: bodyUser.email,
-                name: bodyUser.username,
-                token: bodyUser.token,
-                image: bodyUser.img,
-            },
-        })
-        res.send(user)
-   
+
+    const bodyUser = req.body
+    let user = await prisma.user.create({
+        data: {
+            username: bodyUser.username,
+            email: bodyUser.email,
+            name: bodyUser.username,
+            token: bodyUser.token,
+            image: bodyUser.img,
+        },
+    })
+    res.send(user)
+
 })
 
 
@@ -98,29 +98,22 @@ apiRout.get('/pushNot', (req, res) => {
 })
 
 //insert result
-apiRout.post('/createResult', async (req, res) => {
+apiRout.get('/createResult', async (req, res) => {
     const sender = req.query.sender
     const token = req.query.token
     const receiver = parseInt(req.query.receiver)
     const answers = parseInt(req.query.answers)
-   
-    let insertRes = await prisma.result.create({
+    
+
+    const insert = await prisma.TblResluts.create({
         data: {
-            sender: sender,
-            receiver: receiver,
-            answers: answers
+            sender:sender,
+            receiver:receiver,
+            answers:answers
         }
     })
-    if (insertRes) {
-        const user = await prisma.user.findFirst({
-            where: {
-                id: sender,
-            },
-        })
-
-        if (user) {
-            pushNotifcation(token)
-        }
+    if (insert) {
+        pushNotifcation(token)
     }
     res.send("")
 

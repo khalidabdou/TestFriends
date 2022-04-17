@@ -26,16 +26,6 @@ model question {
   @@ignore
 }
 
-/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
-model result {
-  id       Int
-  sender   Int
-  receiver Int
-  answers  String @db.Text
-
-  @@ignore
-}
-
 model user {
   id         Int     @id @default(autoincrement())
   username   String  @db.VarChar(255)
@@ -44,4 +34,11 @@ model user {
   token      String  @db.Text
   image      String? @db.VarChar(255)
   myQuetions String? @db.Text
+}
+
+model TblResluts {
+  id       Int     @id @default(autoincrement())
+  sender   String  @db.VarChar(255)
+  receiver String  @db.VarChar(255)
+  answers  String? @db.VarChar(255)
 }
