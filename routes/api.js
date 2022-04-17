@@ -12,7 +12,6 @@ var serverKey = 'AAAAUSC50us:APA91bHb9VwRi8WWVSGFJ8-2ZRLGSIQ1nCjoBapD_qAmExdVNYK
 
 //get user by id 
 apiRout.get('/getUser', async (req, res) => {
-
     const id = parseInt(req.query.id)
     const user = await prisma.user.findFirst({
         where: {
@@ -101,16 +100,33 @@ apiRout.get('/pushNot', (req, res) => {
 })
 
 //insert result
-apiRout.post('/insertResults', async (req, res) => {
+apiRout.post('/createResult', async (req, res) => {
+    const sender = req.query.sender
+    const token = req.query.token
+    const receiver = parseInt(req.query.receiver)
+    const answers = parseInt(req.query.answers)
+   
     let insertRes = await prisma.result.create({
         data: {
-            sender: 10,
-            receiver: 11,
-            answers: '{}'
+            sender: sender,
+            receiver: receiver,
+            answers: answers
         }
     })
+    if (insertRes) {
+        const user = await prisma.user.findFirst({
+            where: {
+                id: sender,
+            },
+        })
 
-    res.send(insertRes)
+        if (user) {
+            pushNotifcation(token)
+        }
+    }
+    res.send("")
+
+    //res.send(insertRes)
 })
 
 //get result for user
@@ -122,5 +138,36 @@ apiRout.get('/getResults', async (req, res) => {
 apiRout.get('/quetions', (req, res) => {
 
 })
+
+
+function pushNotifcation(token) {
+    const token1 = 'cvqC5Ft5T_OW4rlSTs6OxD:APA91bHnztvutVc2cSV8dzr70VYXXhDMUh3poFBD2HE5pzVWzNpQYBunKupwz-B4c_qQI89U6bEK5QlX68P3cZr1EreJ_u1IPrVY8u7GFgYod_cDcTRNXFplSdl0GTKUtAxWYyCDS_7k'
+    const token2 = 'efMkmixqTSKTKWqNI16hWe:APA91bETwDJJllTVlF8Eq0Q86KNPKeEwPceOGZBfNEeeqcnrcdDptPTZEfN4GGdAuuCqCsqsyJJ2lcouIqA28GmybYGstcKbt0oGz1ZiK8gvo_IJU5D6MCFu1ercjQ-H5HBDmsfouUu-'
+    var fcm = new FCM(serverKey);
+    var message = { //this may vary according to the message type (single recipient, multicast, topic, et cetera)
+        to: token,
+        collapse_key: '',
+        notification: {
+            title: 'Title of your push notification',
+            body: 'Body of your push notification'
+        },
+
+        data: {  //you can send only notification or only data(or include both)
+            my_key: 'my value',
+            my_another_key: 'my another value'
+        }
+    }
+
+    fcm.send(message, function (err, response) {
+        if (err) {
+            console.log("Something has gone wrong!")
+            res.send("Something has gone wrong!")
+        } else {
+            console.log("Successfully sent with response: ", response)
+            res.send(response)
+        }
+    })
+
+}
 
 module.exports = apiRout
