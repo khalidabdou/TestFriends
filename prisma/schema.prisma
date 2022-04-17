@@ -42,6 +42,6 @@ model user {
   email      String  @db.Text
   name       String  @db.VarChar(255)
   token      String  @db.Text
-  image      String  @db.Text
+  image      String? @db.VarChar(255)
   myQuetions String? @db.Text
 }
