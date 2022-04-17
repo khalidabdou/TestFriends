@@ -50,7 +50,7 @@ apiRout.post('/updateMyQuestions', async (req, res) => {
 
 //create user 
 apiRout.post('/insertUser', async (req, res) => {
-    try {
+    
         const bodyUser = req.body
         let user = await prisma.user.create({
             data: {
@@ -62,9 +62,7 @@ apiRout.post('/insertUser', async (req, res) => {
             },
         })
         res.send(user)
-    } catch (error) {
-        res.send({ "err": error })
-    }
+   
 })
 
 
