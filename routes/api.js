@@ -35,7 +35,8 @@ apiRout.post('/updateMyQuestions', async (req, res) => {
             },
             data: {
                 myQuetions: quetions
-            }
+            },
+
         })
 
         if (result) {
@@ -50,7 +51,6 @@ apiRout.post('/updateMyQuestions', async (req, res) => {
 
 //create user 
 apiRout.post('/insertUser', async (req, res) => {
-
     const bodyUser = req.body
     let user = await prisma.user.create({
         data: {
@@ -61,7 +61,9 @@ apiRout.post('/insertUser', async (req, res) => {
             image: bodyUser.img,
         },
     })
-    res.send(user)
+    if (user)
+    res.send(user.id.toString());
+    else res.send("0")
 
 })
 
@@ -99,38 +101,39 @@ apiRout.get('/pushNot', (req, res) => {
 
 //insert result
 apiRout.post('/createResult', async (req, res) => {
-    
+
     const token = req.query.token
     const receiver = parseInt(req.query.receiver)
-    const sender =parseInt (req.query.sender)
+    const sender = parseInt(req.query.sender)
     const answers = req.query.answers
     const insert = await prisma.TblResluts.create({
         data: {
-            sender:sender,
-            receiver:receiver,
-            answers:answers
+            sender: sender,
+            receiver: receiver,
+            answers: answers
         }
     })
     if (insert) {
-        pushNotifcation(token)
+        pushNotifcation(token, sender)
     }
-    res.send("")
+    res.send("Ok")
 
     //res.send(insertRes)
 })
 
 //get result for user
 apiRout.get('/getResults', async (req, res) => {
-
+    const id = parseInt(req.query.id)
+    const results = await prisma.tblResluts.findMany({
+        where: {
+            sender: id,
+        },
+    })
+    res.send(results)
 })
 
-//get questions 
-apiRout.get('/quetions', (req, res) => {
 
-})
-
-
-function pushNotifcation(token) {
+function pushNotifcation(token, sender) {
     const token1 = 'cvqC5Ft5T_OW4rlSTs6OxD:APA91bHnztvutVc2cSV8dzr70VYXXhDMUh3poFBD2HE5pzVWzNpQYBunKupwz-B4c_qQI89U6bEK5QlX68P3cZr1EreJ_u1IPrVY8u7GFgYod_cDcTRNXFplSdl0GTKUtAxWYyCDS_7k'
     const token2 = 'efMkmixqTSKTKWqNI16hWe:APA91bETwDJJllTVlF8Eq0Q86KNPKeEwPceOGZBfNEeeqcnrcdDptPTZEfN4GGdAuuCqCsqsyJJ2lcouIqA28GmybYGstcKbt0oGz1ZiK8gvo_IJU5D6MCFu1ercjQ-H5HBDmsfouUu-'
     var fcm = new FCM(serverKey);
@@ -138,8 +141,8 @@ function pushNotifcation(token) {
         to: token,
         collapse_key: '',
         notification: {
-            title: 'Title of your push notification',
-            body: 'Body of your push notification'
+            title: 'New Scoor',
+            body: ' your friend answerd your question '
         },
 
         data: {  //you can send only notification or only data(or include both)

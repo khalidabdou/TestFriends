@@ -27,18 +27,23 @@ model question {
 }
 
 model user {
-  id         Int     @id @default(autoincrement())
-  username   String  @db.VarChar(255)
-  email      String  @db.Text
-  name       String  @db.VarChar(255)
-  token      String  @db.Text
-  image      String? @db.VarChar(255)
-  myQuetions String? @db.Text
+  id         Int          @id @default(autoincrement())
+  username   String       @db.VarChar(255)
+  email      String       @db.Text
+  name       String       @db.VarChar(255)
+  token      String       @db.Text
+  image      String?      @db.VarChar(255)
+  myQuetions String?      @db.Text
+  TblResluts TblResluts[]
 }
 
 model TblResluts {
-  id       Int     @id @default(autoincrement())
-  sender   Int
-  receiver Int
-  answers  String? @db.VarChar(255)
+  id           Int     @id @default(autoincrement())
+  sender       Int
+  receiver     Int
+  answers      String? @db.VarChar(255)
+  ReceiverName String? @db.VarChar(255)
+  user         user    @relation(fields: [sender], references: [id], onUpdate: Restrict, map: "TblResluts_ibfk_1")
+
+  @@index([sender], map: "sender")
 }
