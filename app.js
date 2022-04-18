@@ -11,7 +11,7 @@ app.use('/api',api)
 
 
 app.get('',(req,res)=>{
-  res.send("welcom to api 6")
+  res.send("welcom to api 7")
 })
 
 

@@ -155,7 +155,5 @@ function pushNotifcation(token) {
             console.log("Successfully sent with response: ", response)
         }
     })
-
 }
-
 module.exports = apiRout
