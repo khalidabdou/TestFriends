@@ -38,7 +38,7 @@ model user {
 
 model TblResluts {
   id       Int     @id @default(autoincrement())
-  sender   String  @db.VarChar(255)
-  receiver String  @db.VarChar(255)
+  sender   Int
+  receiver Int
   answers  String? @db.VarChar(255)
 }

@@ -98,13 +98,12 @@ apiRout.get('/pushNot', (req, res) => {
 })
 
 //insert result
-apiRout.get('/createResult', async (req, res) => {
-    const sender = req.query.sender
+apiRout.post('/createResult', async (req, res) => {
+    
     const token = req.query.token
     const receiver = parseInt(req.query.receiver)
-    const answers = parseInt(req.query.answers)
-    
-
+    const sender =parseInt (req.query.sender)
+    const answers = req.query.answers
     const insert = await prisma.TblResluts.create({
         data: {
             sender:sender,
@@ -155,7 +154,6 @@ function pushNotifcation(token) {
             res.send("Something has gone wrong!")
         } else {
             console.log("Successfully sent with response: ", response)
-            res.send(response)
         }
     })
 
