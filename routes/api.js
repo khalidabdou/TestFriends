@@ -129,7 +129,7 @@ apiRout.get('/getResults', async (req, res) => {
             sender: id,
         },
     })
-    res.send(results)
+    res.json({results})
 })
 
 
