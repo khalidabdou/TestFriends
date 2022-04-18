@@ -151,7 +151,6 @@ function pushNotifcation(token) {
     fcm.send(message, function (err, response) {
         if (err) {
             console.log("Something has gone wrong!")
-            res.send("Something has gone wrong!")
         } else {
             console.log("Successfully sent with response: ", response)
         }
