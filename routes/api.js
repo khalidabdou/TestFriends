@@ -106,11 +106,13 @@ apiRout.post('/createResult', async (req, res) => {
     const receiver = parseInt(req.query.receiver)
     const sender = parseInt(req.query.sender)
     const answers = req.query.answers
+    const receiverName = req.query.ReceiverName
     const insert = await prisma.TblResluts.create({
         data: {
             sender: sender,
             receiver: receiver,
-            answers: answers
+            answers: answers,
+            ReceiverName:receiverName,
         }
     })
     if (insert) {
