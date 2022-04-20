@@ -16,7 +16,7 @@ apiRout.get('/getUser', async (req, res) => {
     if(id){
      const user = await prisma.tbl_users.findFirst({
         where: {
-            anviteId: id,
+            inviteId: id,
         },
     })
     if (user)
