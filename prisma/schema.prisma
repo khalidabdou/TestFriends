@@ -39,7 +39,7 @@ model tbl_resluts {
 
 model tbl_users {
   id          Int           @id @default(autoincrement())
-  anviteId    String?        @db.VarChar(255)          
+  inviteId    String?        @db.VarChar(255)          
   username    String        @db.VarChar(255)
   email       String        @db.Text
   name        String        @db.VarChar(255)
