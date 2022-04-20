@@ -12,14 +12,18 @@ var serverKey = 'AAAAUSC50us:APA91bHb9VwRi8WWVSGFJ8-2ZRLGSIQ1nCjoBapD_qAmExdVNYK
 
 //get user by id 
 apiRout.get('/getUser', async (req, res) => {
-    const id = parseInt(req.query.id)
-    const user = await prisma.tbl_users.findFirst({
+    const id = req.query.id
+    if(id){
+     const user = await prisma.tbl_users.findFirst({
         where: {
-            id: id,
+            anviteId: id,
         },
     })
     if (user)
-        res.send(user)
+        res.send(user) 
+        return  
+    }
+    
     else res.send(null)
 })
 
@@ -35,7 +39,7 @@ apiRout.post('/updateMyQuestions', async (req, res) => {
                 id: id
             },
             data: {
-                anviteId:"daaa",
+                anviteId:anvite,
                 myQuetions: quetions
             },
 
