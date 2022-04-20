@@ -13,7 +13,7 @@ var serverKey = 'AAAAUSC50us:APA91bHb9VwRi8WWVSGFJ8-2ZRLGSIQ1nCjoBapD_qAmExdVNYK
 //get user by id 
 apiRout.get('/getUser', async (req, res) => {
     const id = parseInt(req.query.id)
-    const user = await prisma.user.findFirst({
+    const user = await prisma.tbl_users.findFirst({
         where: {
             id: id,
         },
@@ -29,7 +29,7 @@ apiRout.post('/updateMyQuestions', async (req, res) => {
         //console.log(questions);
         const id = parseInt(req.query.id)
         const quetions = req.query.questions
-        let result = await prisma.user.update({
+        let result = await prisma.tbl_users.update({
             where: {
                 id: id
             },
@@ -52,7 +52,7 @@ apiRout.post('/updateMyQuestions', async (req, res) => {
 //create user 
 apiRout.post('/insertUser', async (req, res) => {
     const bodyUser = req.body
-    let user = await prisma.user.create({
+    let user = await prisma.tbl_users.create({
         data: {
             username: bodyUser.username,
             email: bodyUser.email,
@@ -66,7 +66,6 @@ apiRout.post('/insertUser', async (req, res) => {
     else res.send("0")
 
 })
-
 
 apiRout.get('/pushNot', (req, res) => {
     const token1 = 'cvqC5Ft5T_OW4rlSTs6OxD:APA91bHnztvutVc2cSV8dzr70VYXXhDMUh3poFBD2HE5pzVWzNpQYBunKupwz-B4c_qQI89U6bEK5QlX68P3cZr1EreJ_u1IPrVY8u7GFgYod_cDcTRNXFplSdl0GTKUtAxWYyCDS_7k'
@@ -106,13 +105,13 @@ apiRout.post('/createResult', async (req, res) => {
     const receiver = parseInt(req.query.receiver)
     const sender = parseInt(req.query.sender)
     const answers = req.query.answers
-    const receiverName = req.query.ReceiverName
-    const insert = await prisma.TblResluts.create({
+    const name = req.query.ReceiverName
+    const insert = await prisma.tbl_resluts.create({
         data: {
             sender: sender,
             receiver: receiver,
             answers: answers,
-            ReceiverName:receiverName,
+            receiverName:name,
         }
     })
     if (insert) {
@@ -126,7 +125,7 @@ apiRout.post('/createResult', async (req, res) => {
 //get result for user
 apiRout.get('/getResults', async (req, res) => {
     const id = parseInt(req.query.id)
-    const results = await prisma.tblResluts.findMany({
+    const results = await prisma.tbl_resluts.findMany({
         where: {
             sender: id,
         },

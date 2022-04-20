@@ -8,7 +8,7 @@ datasource db {
 }
 
 /// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
-model question {
+model tbl_question {
   id            Int
   question      String @db.Text
   realAnswer    String @db.VarChar(255)
@@ -26,24 +26,24 @@ model question {
   @@ignore
 }
 
-model user {
-  id         Int          @id @default(autoincrement())
-  username   String       @db.VarChar(255)
-  email      String       @db.Text
-  name       String       @db.VarChar(255)
-  token      String       @db.Text
-  image      String?      @db.VarChar(255)
-  myQuetions String?      @db.Text
-  TblResluts TblResluts[]
-}
-
-model TblResluts {
-  id           Int     @id @default(autoincrement())
+model tbl_resluts {
+  id           Int       @id @default(autoincrement())
   sender       Int
   receiver     Int
-  answers      String? @db.VarChar(255)
-  ReceiverName String? @db.VarChar(255)
-  user         user    @relation(fields: [sender], references: [id], onUpdate: Restrict, map: "TblResluts_ibfk_1")
+  answers      String?   @db.VarChar(255)
+  receiverName String?   @db.VarChar(255)
+  tbl_users    tbl_users @relation(fields: [sender], references: [id], onUpdate: Restrict, map: "tbl_resluts_ibfk_1")
 
   @@index([sender], map: "sender")
+}
+
+model tbl_users {
+  id          Int           @id @default(autoincrement())
+  username    String        @db.VarChar(255)
+  email       String        @db.Text
+  name        String        @db.VarChar(255)
+  token       String        @db.Text
+  image       String?       @db.VarChar(255)
+  myQuetions  String?       @db.Text
+  tbl_resluts tbl_resluts[]
 }
