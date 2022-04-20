@@ -28,12 +28,14 @@ apiRout.post('/updateMyQuestions', async (req, res) => {
         //const questions = JSON.parse(req.body.questions)
         //console.log(questions);
         const id = parseInt(req.query.id)
+        const anvite = req.query.anviteId
         const quetions = req.query.questions
         let result = await prisma.tbl_users.update({
             where: {
                 id: id
             },
             data: {
+                anviteId:"daaa",
                 myQuetions: quetions
             },
 
