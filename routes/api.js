@@ -13,16 +13,20 @@ var serverKey = 'AAAAUSC50us:APA91bHb9VwRi8WWVSGFJ8-2ZRLGSIQ1nCjoBapD_qAmExdVNYK
 //get user by id 
 apiRout.get('/getUser', async (req, res) => {
     const id = req.query.id
-    if(id){
-     const user = await prisma.tbl_users.findFirst({
-        where: {
-            inviteId: id,
-        },
-    })
-     res.send(user)
+    if (id) {
+        const user = await prisma.tbl_users.findFirst({
+            where: {
+                inviteId: id,
+            },
+        })
+        if (user === "") {
+            res.json(null)
+        } else
+            res.json(user)
+
     }
 
-    
+
 })
 
 apiRout.post('/updateMyQuestions', async (req, res) => {
@@ -37,7 +41,7 @@ apiRout.post('/updateMyQuestions', async (req, res) => {
                 id: id
             },
             data: {
-                inviteId:inviteId,
+                inviteId: inviteId,
                 myQuetions: quetions
             },
 
@@ -66,7 +70,7 @@ apiRout.post('/insertUser', async (req, res) => {
         },
     })
     if (user)
-    res.send(user.id.toString());
+        res.send(user.id.toString());
     else res.send("0")
 
 })
@@ -115,7 +119,7 @@ apiRout.post('/createResult', async (req, res) => {
             sender: sender,
             receiver: receiver,
             answers: answers,
-            receiverName:name,
+            receiverName: name,
         }
     })
     if (insert) {
@@ -134,7 +138,7 @@ apiRout.get('/getResults', async (req, res) => {
             sender: id,
         },
     })
-    res.json({results})
+    res.json({ results })
 })
 
 
