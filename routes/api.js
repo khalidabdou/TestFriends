@@ -19,12 +19,10 @@ apiRout.get('/getUser', async (req, res) => {
             inviteId: id,
         },
     })
-    if (user)
-        res.send(user) 
-        return  
+     res.send(user)
     }
+
     
-    else res.send(null)
 })
 
 apiRout.post('/updateMyQuestions', async (req, res) => {
@@ -121,7 +119,7 @@ apiRout.post('/createResult', async (req, res) => {
         }
     })
     if (insert) {
-        pushNotifcation(token, sender)
+        pushNotifcation(token)
     }
     res.send("Ok")
 
@@ -140,7 +138,7 @@ apiRout.get('/getResults', async (req, res) => {
 })
 
 
-function pushNotifcation(token, sender) {
+function pushNotifcation(token) {
     const token1 = 'cvqC5Ft5T_OW4rlSTs6OxD:APA91bHnztvutVc2cSV8dzr70VYXXhDMUh3poFBD2HE5pzVWzNpQYBunKupwz-B4c_qQI89U6bEK5QlX68P3cZr1EreJ_u1IPrVY8u7GFgYod_cDcTRNXFplSdl0GTKUtAxWYyCDS_7k'
     const token2 = 'efMkmixqTSKTKWqNI16hWe:APA91bETwDJJllTVlF8Eq0Q86KNPKeEwPceOGZBfNEeeqcnrcdDptPTZEfN4GGdAuuCqCsqsyJJ2lcouIqA28GmybYGstcKbt0oGz1ZiK8gvo_IJU5D6MCFu1ercjQ-H5HBDmsfouUu-'
     var fcm = new FCM(serverKey);
