@@ -2,6 +2,7 @@ const express = require('express')
 const apiRout = express.Router()
 const http = require('http');
 const url = require('url');
+const fs = require('fs');
 
 const { PrismaClient } = require('@prisma/client')
 const prisma = new PrismaClient()
@@ -139,6 +140,12 @@ apiRout.get('/getResults', async (req, res) => {
         },
     })
     res.json({ results })
+})
+
+apiRout.get('/questions',(req,res)=>{
+    let rawdata = fs.readFileSync('upload/question.json');
+    let student = JSON.parse(rawdata);
+    res.send(student)
 })
 
 
