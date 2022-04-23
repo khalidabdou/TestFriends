@@ -1,0 +1,352 @@
+{
+  "questions": [
+    {
+      "id": 0,
+      "question": "\uD83C\uDF08 What is abdellah's favorite color?",
+      "realAnswer": "",
+      "answer1": {
+        "text": "Pink",
+        "img": "1.png"
+      },
+      "answer2": {
+        "text": "Blue",
+        "img": "2.png"
+      },
+      "answer3": {
+        "text": "Purple",
+        "img": "3.png"
+      },
+      "answer4": {
+        "text": "Red",
+        "img": "4.png"
+      }
+    },
+    {
+      "id": 1,
+      "question": "\uD83C\uDF92 How many schools has abdellah gone to?",
+      "realAnswer": "",
+      "answer1": {
+        "text": "1",
+        "img": ""
+      },
+      "answer2": {
+        "text": "2",
+        "img": ""
+      },
+      "answer3": {
+        "text": "3",
+        "img": ""
+      },
+      "answer4": {
+        "text": "4",
+        "img": ""
+      }
+    },
+    {
+      "id": 2,
+      "question": "\uD83D\uDDEF️ If abdellah could be a cartoon character for a day, who would it be?",
+      "realAnswer": "",
+      "answer1": {
+        "text":  "Rick (Rick & Morty)",
+        "img": ""
+      },
+      "answer2": {
+        "text": "Homer (The Simpsons)",
+        "img": ""
+      },
+      "answer3": {
+        "text": "Donald Duck",
+        "img": ""
+      },
+      "answer4": {
+        "text": "Finn/Jake/Bubblegum (Adventure Time)",
+        "img": ""
+      }
+    },
+    {
+      "id": 3,
+      "question": "\uD83D\uDE31 What is abdellah most afraid of?",
+      "realAnswer": "",
+      "answer1": {
+        "text":  "\uD83D\uDC1B Bugs",
+        "img": ""
+      },
+      "answer2": {
+        "text": "\uD83D\uDD77️ Spider",
+        "img": ""
+      },
+      "answer3": {
+        "text": "\uD83D\uDC00 Rats and mice",
+        "img": ""
+      },
+      "answer4": {
+        "text": "heights",
+        "img": ""
+      }
+    },
+    {
+      "id": 4,
+      "question": "What is abdellah's dream job?",
+      "realAnswer": "",
+      "answer1": {
+        "text":  "\uD83D\uDC68\u200D\uD83D\uDE80 Astronaut",
+        "img": ""
+      },
+      "answer2": {
+        "text": "\uD83C\uDFA5 Famous actor/actressr",
+        "img": ""
+      },
+      "answer3": {
+        "text": "\uD83C\uDF0C Jedi",
+        "img": ""
+      },
+      "answer4": {
+        "text": "\uD83D\uDD2C Scientist",
+        "img": ""
+      }
+
+    },
+    {
+      "id": 5,
+      "question": "If abdellah could instantly speak fluently any other language, what would that language be?",
+      "realAnswer": "",
+      "answer1": {
+        "text":  "\uD83C\uDDEB\uD83C\uDDF7 French",
+        "img": ""
+      },
+      "answer2": {
+        "text": "\uD83C\uDDE9\uD83C\uDDEA German",
+        "img": ""
+      },
+      "answer3": {
+        "text": "\uD83C\uDDEF\uD83C\uDDF5 Japanese",
+        "img": ""
+      },
+      "answer4": {
+        "text": "\uD83C\uDDEE\uD83C\uDDF9 Italian",
+        "img": ""
+      }
+    },
+    {
+      "id": 6,
+      "question": "\uD83C\uDFAC What is abdellah's favorite movie?",
+      "realAnswer": "",
+
+      "answer1": {
+        "text":  "Avengers: Endgame ",
+        "img": ""
+      },
+      "answer2": {
+        "text": "It: Chapter Two",
+        "img": ""
+      },
+      "answer3": {
+        "text": "Spider-Man: Far From Home",
+        "img": ""
+      },
+      "answer4": {
+        "text": "Toy Story 4",
+        "img": ""
+      }
+
+    },
+    {
+      "id": 7,
+      "question": "If abdellah meets a genie, what would be his/her wish?",
+      "realAnswer": "",
+
+      "answer1": {
+        "text":  "\uD83D\uDCB8 A billion Dollars",
+        "img": ""
+      },
+      "answer2": {
+        "text": "\uD83D\uDC91 Beautiful wife/Handsome Husband",
+        "img": ""
+      },
+      "answer3": {
+        "text": "\uD83D\uDC51 To be the king of the world",
+        "img": ""
+      },
+      "answer4": {
+        "text": "other",
+        "img": ""
+      }
+    },
+    {
+      "id": 8,
+      "question": "What does abdellah drink the most?",
+      "realAnswer": "",
+      "answer1": {
+        "text":  "☕ Tea",
+        "img": ""
+      },
+      "answer2": {
+        "text": "\uD83C\uDF7A Beer",
+        "img": ""
+      },
+      "answer3": {
+        "text": "☕ Coffee",
+        "img": ""
+      },
+      "answer4": {
+        "text": "\uD83C\uDF75 Green Tea",
+        "img": ""
+      }
+
+    },
+    {
+      "id": 9,
+      "question": "Which fast food restaurant does abdellah prefer the most",
+      "realAnswer": "",
+      "answer1": {
+        "text":  "Pizza Hut",
+        "img": ""
+      },
+      "answer2": {
+        "text": "Subway",
+        "img": ""
+      },
+      "answer3": {
+        "text": "Taco Bell",
+        "img": ""
+      },
+      "answer4": {
+        "text": "McDonald's",
+        "img": ""
+      }
+  
+    },
+    {
+      "id": 10,
+      "question": "What’s my favorite animal?",
+      "realAnswer": "",
+      "answer1": {
+        "text":  "Mansfield",
+        "img": ""
+      },
+      "answer2": {
+        "text": "Summerset",
+        "img": ""
+      },
+      "answer3": {
+        "text":  "Worton",
+        "img": ""
+      },
+      "answer4": {
+        "text":  "Juntura",
+        "img": ""
+      }
+
+    },
+    {
+      "id": 11,
+      "question": "Where would abdellah like to go with abdellah's soulmate?",
+      "realAnswer": "",
+      "answer1": {
+        "text": "\uD83D\uDDFC Paris",
+        "img": ""
+      },
+      "answer2": {
+        "text": "\uD83C\uDFDD Bali",
+        "img": ""
+      },
+      "answer3": {
+        "text": "\uD83C\uDFDE Sonoma",
+        "img": ""
+      },
+      "answer4": {
+        "text": "\uD83C\uDF09 Venice",
+        "img": ""
+      }
+    },
+    {
+      "id": 12,
+      "question": "Which animal does abdellah dream to pet?",
+      "realAnswer": "",
+      "answer1": {
+        "text":  "\uD83D\uDC36 A Dog",
+        "img": ""
+      },
+      "answer2": {
+        "text":  "\uD83D\uDC30 A Rabbit",
+        "img": ""
+      },
+      "answer3": {
+        "text":"\uD83D\uDC31 A Cat",
+        "img": ""
+      },
+      "answer4": {
+        "text":  "\uD83D\uDC39 A Hamster",
+        "img": ""
+      }
+  
+    },
+    {
+      "id": 13,
+      "question": "With whom would abdellah like to spend some quality time?",
+      "realAnswer": "",
+      "answer1": {
+        "text":  "Elon Musk",
+        "img": ""
+      },
+      "answer2": {
+        "text": "Ed Sheeran",
+        "img": ""
+      },
+      "answer3": {
+        "text": "Stephen King",
+        "img": ""
+      },
+      "answer4": {
+        "text": "Christopher Nolan",
+        "img": ""
+      }
+     
+    },
+    {
+      "id": 14,
+      "question": "\uD83C\uDFAC What type of movies does abdellah like?",
+      "realAnswer": "",
+      "answer1": {
+        "text":  "\uD83D\uDC91 Romance",
+        "img": ""
+      },
+      "answer2": {
+        "text": "\uD83D\uDC4A Action",
+        "img": ""
+      },
+      "answer3": {
+        "text":  "\uD83D\uDE32 Thriller",
+        "img": ""
+      },
+      "answer4": {
+        "text":"\uD83D\uDE02 Comedy",
+        "img": ""
+      }
+    
+    },
+    {
+      "id": 15,
+      "question": "In abdellah's freetime, where would abdellah go?",
+      "realAnswer": "",
+      "answer1": {
+        "text":  "\uD83D\uDE34 Sleeping",
+        "img": ""
+      },
+      "answer2": {
+        "text":  "\uD83D\uDED2 Shopping",
+        "img": ""
+      },
+      "answer3": {
+        "text": "\uD83D\uDCD6 Library",
+        "img": ""
+      },
+      "answer4": {
+        "text":  "\uD83D\uDCAA Gym",
+        "img": ""
+      }
+  
+    }
+   
+  ]
+}
