@@ -13,11 +13,34 @@ var serverKey = 'AAAAUSC50us:APA91bHb9VwRi8WWVSGFJ8-2ZRLGSIQ1nCjoBapD_qAmExdVNYK
 
 //get user by id 
 apiRout.get('/getUser', async (req, res) => {
-    const id = req.query.id
-    if (id) {
+
+    const idQuery = req.query.id
+    const emailQuery = req.query.email
+
+
+    const user = await prisma.tbl_users.findFirst({
+        where: {
+            OR:[
+                {inviteId:idQuery},
+                {email:emailQuery}
+            ]
+        },
+    })
+    if (user === "") {
+        res.json(null)
+    } else
+        res.json(user)
+
+
+
+})
+
+apiRout.get('/getUserByEmail', async (req, res) => {
+    const email = req.query.email
+    if (email) {
         const user = await prisma.tbl_users.findFirst({
             where: {
-                inviteId: id,
+                email: email,
             },
         })
         if (user === "") {
@@ -26,8 +49,6 @@ apiRout.get('/getUser', async (req, res) => {
             res.json(user)
 
     }
-
-
 })
 
 apiRout.post('/updateMyQuestions', async (req, res) => {
@@ -142,7 +163,7 @@ apiRout.get('/getResults', async (req, res) => {
     res.json({ results })
 })
 
-apiRout.get('/questions',(req,res)=>{
+apiRout.get('/questions', (req, res) => {
     let rawdata = fs.readFileSync('upload/question.json');
     let student = JSON.parse(rawdata);
     res.send(student)
