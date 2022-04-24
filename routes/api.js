@@ -93,8 +93,6 @@ apiRout.put('/updateUser', async (req, res) => {
             username: bodyUser.username,
             name: bodyUser.username,
             token: bodyUser.token,
-            image: bodyUser.img,
-            inviteId: bodyUser.inviteId,
         },
     })
     if (user) {
