@@ -20,9 +20,9 @@ apiRout.get('/getUser', async (req, res) => {
 
     const user = await prisma.tbl_users.findFirst({
         where: {
-            OR:[
-                {inviteId:idQuery},
-                {email:emailQuery}
+            OR: [
+                { inviteId: idQuery },
+                { email: emailQuery }
             ]
         },
     })
@@ -35,21 +35,6 @@ apiRout.get('/getUser', async (req, res) => {
 
 })
 
-apiRout.get('/getUserByEmail', async (req, res) => {
-    const email = req.query.email
-    if (email) {
-        const user = await prisma.tbl_users.findFirst({
-            where: {
-                email: email,
-            },
-        })
-        if (user === "") {
-            res.json(null)
-        } else
-            res.json(user)
-
-    }
-})
 
 apiRout.post('/updateMyQuestions', async (req, res) => {
     try {
@@ -89,12 +74,34 @@ apiRout.post('/insertUser', async (req, res) => {
             name: bodyUser.username,
             token: bodyUser.token,
             image: bodyUser.img,
+            inviteId: bodyUser.inviteId,
         },
     })
     if (user)
         res.send(user.id.toString());
     else res.send("0")
 
+})
+
+apiRout.put('/updateUser', async (req, res) => {
+    const bodyUser = req.body
+    let user = await prisma.tbl_users.update({
+        where: {
+            email: bodyUser.email
+        } ,
+        data: {
+            username: bodyUser.username,
+            name: bodyUser.username,
+            token: bodyUser.token,
+            image: bodyUser.img,
+            inviteId: bodyUser.inviteId,
+        },
+    })
+    if (user) {
+        res.json(user)
+    }else {
+        res.send(null)
+    }
 })
 
 apiRout.get('/pushNot', (req, res) => {

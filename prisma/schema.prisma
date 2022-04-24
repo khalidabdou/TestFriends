@@ -39,12 +39,12 @@ model tbl_resluts {
 
 model tbl_users {
   id          Int           @id @default(autoincrement())
-  inviteId    String?        @db.VarChar(255)          
   username    String        @db.VarChar(255)
-  email       String        @db.Text
+  email       String        @unique
   name        String        @db.VarChar(255)
   token       String        @db.Text
   image       String?       @db.VarChar(255)
   myQuetions  String?       @db.Text
+  inviteId    String?       @db.VarChar(255)
   tbl_resluts tbl_resluts[]
 }
