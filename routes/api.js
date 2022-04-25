@@ -78,7 +78,7 @@ apiRout.post('/insertUser', async (req, res) => {
         },
     })
     if (user)
-        res.send(user.id.toString());
+        res.send(user);
     else res.send("0")
 
 })
