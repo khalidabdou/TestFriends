@@ -40,27 +40,28 @@ apiRout.post('/updateMyQuestions', async (req, res) => {
     try {
         //const questions = JSON.parse(req.body.questions)
         //console.log(questions);
-        const id = parseInt(req.query.id)
-        const inviteId = req.query.inviteId
-        const quetions = req.query.questions
-        let result = await prisma.tbl_users.update({
+        const bodyUser = req.body
+        const id = parseInt(bodyUser.id)
+        //const inviteId = req.query.inviteId
+        //const quetions = req.query.questions
+        let user = await prisma.tbl_users.update({
             where: {
                 id: id
             },
             data: {
-                inviteId: inviteId,
-                myQuetions: quetions
+                inviteId: bodyUser.inviteId,
+                myQuetions: bodyUser.myQuestions
             },
 
         })
 
-        if (result) {
-            res.send('success ')
-        }
+        if (user) {
+            res.json()
+        } else res.send(null)
 
     } catch (err) {
         console.log(err);
-        res.send('err ' + err)
+        res.send(null)
     }
 })
 
@@ -88,7 +89,7 @@ apiRout.put('/updateUser', async (req, res) => {
     let user = await prisma.tbl_users.update({
         where: {
             email: bodyUser.email
-        } ,
+        },
         data: {
             username: bodyUser.username,
             name: bodyUser.username,
@@ -97,7 +98,7 @@ apiRout.put('/updateUser', async (req, res) => {
     })
     if (user) {
         res.json(user)
-    }else {
+    } else {
         res.send(null)
     }
 })
