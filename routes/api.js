@@ -56,7 +56,7 @@ apiRout.post('/updateMyQuestions', async (req, res) => {
         })
 
         if (user) {
-            res.json()
+            res.json(user)
         } else res.send(null)
 
     } catch (err) {
