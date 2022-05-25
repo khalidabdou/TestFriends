@@ -12,7 +12,7 @@ app.set(express.static(path.join(__dirname, 'upload')));
 
 app.use('/api',api)
 
-
+   
 const uploadDirectory = path.join(__dirname, "./upload");
 app.use(express.static(uploadDirectory));
 
