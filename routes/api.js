@@ -48,6 +48,8 @@ apiRout.post('/updateMyQuestions', async (req, res) => {
             where: {
                 id: id
             },
+
+            
             data: {
                 inviteId: bodyUser.inviteId,
                 myQuetions: bodyUser.myQuestions
