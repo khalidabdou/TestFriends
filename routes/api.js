@@ -15,14 +15,12 @@ var serverKey = 'AAAAUSC50us:APA91bHb9VwRi8WWVSGFJ8-2ZRLGSIQ1nCjoBapD_qAmExdVNYK
 apiRout.get('/getUser', async (req, res) => {
 
     const idQuery = req.query.id
-    const emailQuery = req.query.email
-
-
     const user = await prisma.tbl_users.findFirst({
         where: {
             OR: [
                 { inviteId: idQuery },
-                { email: emailQuery }
+                { email: idQuery },
+                { username: idQuery },
             ]
         },
     })
@@ -30,8 +28,6 @@ apiRout.get('/getUser', async (req, res) => {
         res.json(null)
     } else
         res.json(user)
-
-
 
 })
 
