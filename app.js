@@ -16,7 +16,9 @@ app.use('/api',api)
 const uploadDirectory = path.join(__dirname, "./upload");
 app.use(express.static(uploadDirectory));
 
-
+app.get('',(req,res)=>{
+  res.send("welcom to api")
+})
 
 
 var server =app.listen(port, () => {
